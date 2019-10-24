@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const compression = require('compression')();
 const routes = require('./server-routes');
-const { PORT = 3000 } = process.env;
+const { PORT = 5000 } = process.env;
+
 
 function setHeaders(res, file) {
 	let cache = path.basename(file) === 'sw.js' ? 'private,no-cache' : 'public,max-age=31536000,immutable';

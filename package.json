@@ -9,6 +9,7 @@
     "start": "node server"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.9.10",
     "preact-cli": "^2.0.0"
   },
   "dependencies": {
