@@ -5,13 +5,15 @@ const App = require('../src/components/app');
 
 const mapper = new ScriptMapper();
 
+
 const homeRoute = (req, res) => {
-	// let body = render(<App/>);
+	let body = render(<App.default />);
 	res.setHeader('Content-Type', 'text/html');
 	const builtFileHTML = mapper.constructScript('home');
 	res.send(
 		`<html>
 			<body>
+				${body}
 				${builtFileHTML}
 			</body>
 		</html>`);
