@@ -1,11 +1,4 @@
 const fs = require('fs');
-const { h } = require('preact');
-const render = require('preact-render-to-string');
-const bundle = require('./build/ssr-build/ssr-bundle');
-// const template = fs.readFileSync('build/index.html', 'utf8');
-// const NotFound = require('./src/routes/notFound');
-const App = bundle.default;
-const RGX = /<div id="app"[^>]*>.*?(?=<script)/i;
 
 const ASSETS_JSON_PATH = 'assets.json';
 
@@ -34,30 +27,10 @@ ScriptMapper.prototype.constructScript = function(route) {
 		'notFound': () => {
 			return this.createTag('link', bundle.css, 'stylesheet') + this.createTag('script', bundle.js)  + this.createTag('script', this.assets['route-notFound'].js);
 		}
-	}
+  }
 	return scriptConstructor[route]();
 }
 
-const mapper = new ScriptMapper();
-
-
-const homeRoute = (req, res) => {
-	let body = render(h(App, { url: req.url }));
-	res.setHeader('Content-Type', 'text/html');
-	const builtFileHTML = mapper.constructScript('home');
-	res.send(
-		`<html>
-			<body>
-				${builtFileHTML}
-			</body>
-		</html>`);
-};
-
-const errorRoute = (req, res) => {
-	res.setHeader('Content-Type', 'text/html');
-};
-
 module.exports = {
-  homeRoute,
-  errorRoute
+  ScriptMapper
 }

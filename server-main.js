@@ -1,7 +1,12 @@
+require('babel-register')({
+  presets: ['env'],
+  plugins: [['transform-react-jsx', { pragma: 'h' }]]
+});
+
 const express = require('express');
 const path = require('path');
 const compression = require('compression')();
-const routes = require('./server-routes');
+const routes = require('./server/server-routes');
 const { PORT = 5000 } = process.env;
 
 

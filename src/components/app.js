@@ -12,15 +12,13 @@ export default class App extends Component {
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
 	 *	@param {string} event.url	The newly routed URL
 	 */
-	handleRoute = e => {
-		this.currentUrl = e.url;
-	};
+
 
 	render(props) {
 		return (
 			<div id="app">
 				<Header />
-				<Router url={props.url} onChange={this.handleRoute}>
+				<Router url={props.url} >
 					<Home path="/" />
 					<NotFound path="/*" />
 				</Router>

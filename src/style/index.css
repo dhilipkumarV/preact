@@ -18,3 +18,7 @@ html, body {
 #app {
 	height: 100%;
 }
+
+.marginL10 {
+	margin-left: 10px;
+}
